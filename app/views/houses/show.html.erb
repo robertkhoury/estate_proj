@@ -1,0 +1,44 @@
+<% provide(:title, @house.address) %>
+
+<h1><%= @house.address %></h1>
+<p><center><%= @house.city %>, <%= @house.state %>  <%= @house.zip %></center></p>
+<p><center>Asking Price: $<%= number_with_delimiter(@house.price, :delimiter => ',') %></center></p>
+
+<center><%= image_tag("sample_image.jpg") %></center>
+
+<br><br>
+<body><%= @house.description %></body>
+
+
+<br><br>
+<h3>Property Overview</h3>
+<table class="table table-striped table-bordered">
+<tr>
+  <td><%= number_with_delimiter(@house.square_footage, :delimiter => ',') %> sqft</td>
+  <td>Lot Size: <%= number_with_delimiter(@house.lot_size, :delimiter => ',') %> sqft</td>		
+  <td>Type: <%= @house.house_type %></td>
+</tr>
+<tr>
+  <td><%= @house.beds %> bedrooms</td>
+  <td>Built in <%= @house.year_built %></td>		
+  <td>Heating: <%= @house.heating_type %></td>
+</tr>
+<tr>
+  <td><%= @house.baths %> bathrooms</td>
+  <td>Air Conditioning: <%= @house.air_conditioning %></td>		
+  <td>Garage: <%= @house.garage %></td>
+</tr>
+<tr>
+  <td>Attic: <%= @house.attic %></td>
+  <td>Basement: <%= @house.basement %></td>		
+  <td>Fireplaces: <%= @house.fireplaces %></td>
+</tr>
+<tr>
+  <td>Flooring: <%= @house.flooring %></td>
+  <td>Appliances: <%= @house.appliances %></td>
+  <td></td>		
+</tr>
+</table>
+
+</body>
+</html>
