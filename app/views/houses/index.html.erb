@@ -4,7 +4,7 @@
 <ul class="listings">
   <% @houses.each do |house| %>
     <li>
-      <%= link_to house.address, house %>
+      <%= link_to "#{house.address}, #{house.city}, #{house.state}", house %>
     </li>
   <% end %>
 </ul>
