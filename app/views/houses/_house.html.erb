@@ -1,0 +1,7 @@
+<li>
+  <%= link_to "#{house.address}, #{house.city}, #{house.state}", house %>
+
+  <% if current_user && current_user.id == house.user_id %>
+    | (<%= link_to "edit", edit_house_path(house) %>)
+  <% end %>
+</li>

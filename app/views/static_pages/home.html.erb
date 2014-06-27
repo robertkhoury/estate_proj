@@ -16,10 +16,7 @@
 </div>
 <div class="home_signin">
   <% if signed_in? %>
-  	or
-  	<br>
-  	<br>
-	<%= link_to "List new home", listhouse_path, class: "btn btn-large btn-primary" %> 
+	  <%= link_to "Post New Listing", listhouse_path, class: "btn btn-large btn-primary" %> 
   <% else %>
   	<%= link_to "Sign up now to list a home", signup_path, class: "btn btn-large btn-primary" %> 
   <br>

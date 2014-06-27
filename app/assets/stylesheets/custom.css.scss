@@ -210,3 +210,26 @@ input {
     }
   }
 }
+
+.user_listings {
+  font-size: 1.2em;
+  text-align: left;
+  margin-left: 30px;
+
+  ol {
+    letter-spacing: -0.2px;
+    font-size: 1.1em;
+  }
+}
+
+.profile_name {
+
+  h1 {
+    text-align: center;
+    margin-bottom: 0;
+    margin-top: 5px;
+    letter-spacing: -1px;
+  }
+
+}
+

@@ -12,13 +12,27 @@ class HousesController < ApplicationController
   	@house = House.find(params[:id])
   end
 
+  def edit
+    @house = House.find(params[:id])
+  end
+
   def create
-    @house = House.new(house_params)
+    @house = current_user.houses.build(house_params)
     if @house.save
-      flash[:success] = "Successful listing!"
+      flash[:success] = "Successful Listing!"
       redirect_to @house
     else
       render 'new'
+    end
+  end
+
+  def update
+    @house = House.find(params[:id])
+    if @house.update_attributes(house_params)
+      flash[:success] = "Listing updated"
+      redirect_to @house
+    else
+      render 'edit'
     end
   end
 
@@ -30,7 +44,8 @@ class HousesController < ApplicationController
                             :heating_type, :air_conditioning, :garage, 
                             :flooring, :year_built, :basement, :attic, 
                             :parking ,:fireplaces, :appliances, 
-                            :house_type, :description, :zip, :city)
+                            :house_type, :description, :zip, :city,
+                            :floors)
     end
 
 end

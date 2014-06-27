@@ -1,6 +1,10 @@
 <footer class="footer">
   <small>
-    Robert's Real Estate
+    <% if !signed_in? %>
+      Robert's Real Estate
+    <% else %>
+      Logged in as <%=h current_user.name %>
+    <% end %>
   </small>
   <nav>
     <ul>

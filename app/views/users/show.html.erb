@@ -1,13 +1,28 @@
 <% provide(:title, @user.name) %>
 <div class="row">
-	<aside class="span4">
-		<section>
+	<aside class="profile_name">
 			<h1>
 			  <%= @user.name %>
 			</h1>
-		</section>
 	</aside>
+	<div class="user_listings">
+		<br><br>
+	    <% if @user.houses.any? %>
+	      <h3>Listings (<%= @user.houses.count %>)</h3>
+	      <ol>
+	        <%= render @houses %>
+	      </ol>
+	      <%= will_paginate @houses %>
+	    <% else %>
+	      <h3>You currently have no listings.</h3>
+	      <p>Click the button below to create one!</p>
+	    <% end %>
+    </div>
 </div>
 <p>
-  //This page will display the user's listed homes, as well as edit their listings. 
+  <br>
+  <br>
+  <center>
+    <%= link_to "Post New Listing", listhouse_path, class: "btn btn-large btn-primary" %> 
+  </center>
 </p>

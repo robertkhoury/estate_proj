@@ -1,5 +1,5 @@
-<% provide(:title, 'List House') %>
-<h1>List House</h1>
+<% provide(:title, 'Edit Listing') %>
+<h1>Edit Listing</h1>
 
 <div class="row">
   <div class="span6 offset3">
@@ -32,7 +32,6 @@
 
       <%= f.label :price %>
       <%= f.number_field :price %>
-
 
       <label>Size (e.g. 8,500 sqft)</label>
       <%= f.text_field :square_footage %>
@@ -73,10 +72,10 @@
 	    <%= f.label :appliances %>
       <%= f.text_field :appliances %>
 
-	    <%= f.label :owner_description %>
+      <%= f.label :owner_description %>
       <%= f.text_field :description %>
 
-      <%= f.submit "Post Listing", class: "btn btn-large btn-primary" %>
+      <%= f.submit "Save Changes", class: "btn btn-large btn-primary" %>
     <% end %>
   </div>
 </div>

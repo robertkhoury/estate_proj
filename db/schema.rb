@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140604004251) do
+ActiveRecord::Schema.define(version: 20140625220001) do
 
   create_table "houses", force: true do |t|
     t.string   "address"
@@ -22,8 +22,8 @@ ActiveRecord::Schema.define(version: 20140604004251) do
     t.string   "county"
     t.integer  "beds"
     t.float    "baths"
-    t.integer  "square_footage"
-    t.integer  "lot_size"
+    t.string   "square_footage"
+    t.string   "lot_size"
     t.string   "heating_type"
     t.string   "air_conditioning"
     t.string   "garage"
@@ -38,6 +38,8 @@ ActiveRecord::Schema.define(version: 20140604004251) do
     t.string   "description"
     t.integer  "zip"
     t.string   "city"
+    t.integer  "floors"
+    t.integer  "user_id"
   end
 
   create_table "microposts", force: true do |t|
