@@ -5,7 +5,8 @@ class HousesController < ApplicationController
   end
 
   def index
-    @houses = House.paginate(page: params[:page])
+    @search = House.search(params[:q])
+    @houses = @search.result  # load all matching records
   end
 
   def show

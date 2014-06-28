@@ -1,5 +1,23 @@
-<% provide(:title, 'All Listings') %>
-<h1>All Listings</h1>
+<% provide(:title, 'Search Listings') %>
+<h1>Search Listings</h1>
+
+<%= search_form_for @search do |f| %>
+<div class="span5">
+  <div class="field">
+
+  	<%= f.label :address_cont, "Street Address" %>
+  	<%= f.text_field :address_cont %>
+
+  	<%= f.label :city_cont, "City" %>
+  	<%= f.text_field :city_cont %>
+
+  	<%= f.label :zip_cont, "Zip" %>
+  	<%= f.text_field :zip_cont %>
+
+  </div>
+    <%= f.submit "Search", class: "btn btn-medium btn-primary" %>
+</div>
+ <% end %>
 
 <ul class="listings">
   <% @houses.each do |house| %>
