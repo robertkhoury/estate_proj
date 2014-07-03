@@ -1,14 +1,17 @@
 <% provide(:title, @house.address) %>
 
 <h1><%= @house.address %></h1>
-<p><center><%= @house.city %>, <%= @house.state %>  <%= @house.zip %></center></p>
+<p><center><%= @house.city %>, <%= @house.state %>  <%= "%05d" % @house.zip %></center></p>
 <p><center>Asking Price: $<%= number_with_delimiter(@house.price, :delimiter => ',') %></center></p>
 
-<center><%= image_tag("sample_image.jpg") %></center>
+<center><%= image_tag "http://maps.googleapis.com/maps/api/streetview?size=600x450&location=#{@house.address.split.join('+')},#{@house.city.split.join('+')}+#{@house.state}&fov=90&pitch=0" %></center>
 
 <br><br>
-<body><%= @house.description %></body>
 
+
+<br>
+
+<body><%= @house.description %></body>
 
 <br><br>
 <h3>Property Overview</h3>
@@ -43,3 +46,15 @@
   Appliances: <%= @house.appliances %> <br><br>
   Parking: <%= @house.parking %>
 </html>
+
+<br><br>
+
+<center><iframe
+  width="600"
+  height="450"
+  zoom="19"
+  maptype="satellite"
+  frameborder="0" style="border:0"
+  src=<%= "https://www.google.com/maps/embed/v1/place?key=AIzaSyBqejMuiEdMR24e-79FhVgQdOvzYHD0Low&q=#{@house.address.split.join('+')},#{@house.city.split.join('+')}+#{@house.state}" %>>
+</iframe></center>
+

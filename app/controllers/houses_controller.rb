@@ -6,7 +6,8 @@ class HousesController < ApplicationController
 
   def index
     @search = House.search(params[:q])
-    @houses = @search.result  # load all matching records
+    @search.sorts = ['zip asc', 'address desc'] if @search.sorts.empty?
+    @houses = @search.result.paginate(page: params[:page], per_page: 20)  # load all matching records
   end
 
   def show

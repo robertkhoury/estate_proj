@@ -1,28 +1,41 @@
 <% provide(:title, 'Search Listings') %>
 <h1>Search Listings</h1>
 
-<%= search_form_for @search do |f| %>
-<div class="span5">
-  <div class="field">
 
+<%= search_form_for @search do |f| %>
+<div class="row">
+  <div class="span5">
   	<%= f.label :address_cont, "Street Address" %>
   	<%= f.text_field :address_cont %>
 
   	<%= f.label :city_cont, "City" %>
   	<%= f.text_field :city_cont %>
 
-  	<%= f.label :zip_cont, "Zip" %>
-  	<%= f.text_field :zip_cont %>
+  	<%= f.label :zip_eq, "Zip" %>
+  	<%= f.text_field :zip_eq %>
 
-  </div>
+	<div class="row">
+		<div class="span4">
+	  	  <%= f.label :price_gteq, "Price min" %>
+	  	  <%= f.text_field :price_gteq %>
+   	    </div>
+   	    <div class="span4">
+	  	  <%= f.label :price_lteq, "Price max" %>
+	  	  <%= f.text_field :price_lteq %>
+	  </div>
+	</div>
+
     <%= f.submit "Search", class: "btn btn-medium btn-primary" %>
+</div>
 </div>
  <% end %>
 
 <ul class="listings">
   <% @houses.each do |house| %>
     <li>
-      <%= link_to "#{house.address}, #{house.city}, #{house.state}", house %>
+      <% if house.zip %>
+      <%= link_to "#{house.address}, #{house.city}, #{house.state} #{'%05d' % house.zip}", house %>
+      <% end %>
     </li>
   <% end %>
 </ul>
