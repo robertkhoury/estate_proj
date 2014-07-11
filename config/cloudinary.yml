@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: roberts-real-estate
+  api_key: '949784867766947'
+  api_secret: iqqvC2HTLwLAU-K850wHJ84H0j4
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: roberts-real-estate
+  api_key: '949784867766947'
+  api_secret: iqqvC2HTLwLAU-K850wHJ84H0j4
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: roberts-real-estate
+  api_key: '949784867766947'
+  api_secret: iqqvC2HTLwLAU-K850wHJ84H0j4
+  enhance_image_tag: true
+  static_image_support: false

@@ -47,7 +47,7 @@ class HousesController < ApplicationController
                             :flooring, :year_built, :basement, :attic, 
                             :parking ,:fireplaces, :appliances, 
                             :house_type, :description, :zip, :city,
-                            :floors)
+                            :floors, :picture)
     end
 
 end

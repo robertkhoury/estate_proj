@@ -4,7 +4,13 @@
 <p><center><%= @house.city %>, <%= @house.state %>  <%= "%05d" % @house.zip %></center></p>
 <p><center>Asking Price: $<%= number_with_delimiter(@house.price, :delimiter => ',') %></center></p>
 
-<center><%= image_tag "http://maps.googleapis.com/maps/api/streetview?size=600x450&location=#{@house.address.split.join('+')},#{@house.city.split.join('+')}+#{@house.state}&fov=90&pitch=0" %></center>
+
+
+<% if @house.picture.present? %>
+  <center><%= cl_image_tag(@house.picture_url, :c => "mfit", :quality => 80, :width => 650, :alt => @house.address) %></center>
+<% else %>
+  <center><%= image_tag "http://maps.googleapis.com/maps/api/streetview?size=600x450&location=#{@house.address.split.join('+')},#{@house.city.split.join('+')}+#{@house.state}&fov=90&pitch=0" %></center>
+<% end %>
 
 <br><br>
 

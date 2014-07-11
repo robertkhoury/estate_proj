@@ -6,6 +6,9 @@
     <%= form_for(@house) do |f| %>
       <%= render 'houses/error_messages' %>
   
+      <%= f.hidden_field :picture_cache %>
+      <%= f.file_field :picture %>
+
       <%= f.label :street_address %>
       <%= f.text_field :address %>
 
