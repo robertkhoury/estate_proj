@@ -1,14 +1,28 @@
 <% provide(:title, @user.name) %>
 <div class="row">
 	<aside class="profile_name">
-			<h1>
-			  <%= @user.name %>
-			</h1>
+		<h1>
+		  <%= @user.name %>
+		</h1>
 	</aside>
 	<div class="user_listings">
-		<br><br>
+	<br><br>
+    <% if @user.followed_houses.paginate(page: params[:page]).any? %>
+      <h3>Favorites (<%= @user.followed_houses.paginate(page: params[:page]).count %>)</h3>
+      <ol>
+        <%= render @user.followed_houses.paginate(page: params[:page]) %>
+      </ol>
+      <%= will_paginate @houses %>
+      <br>
+    <% else %>
+      <h3>You currently have no favorite homes.</h3>
+      <p>Click 'Favorite' on a listing page to add one!</p>
+    <% end %>
+    </div>
+	<div class="user_listings">
+		<br>
 	    <% if @user.houses.any? %>
-	      <h3>Listings (<%= @user.houses.count %>)</h3>
+	      <h3>My Listings (<%= @user.houses.count %>)</h3>
 	      <ol>
 	        <%= render @houses %>
 	      </ol>
@@ -21,8 +35,10 @@
 </div>
 <p>
   <br>
+
   <br>
   <center>
     <%= link_to "Post New Listing", listhouse_path, class: "btn btn-large btn-primary" %> 
   </center>
-</p>
+<br><br>
+

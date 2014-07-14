@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   has_many :microposts
   has_many :houses
+  has_many :relationships, foreign_key: "follower_id", dependent: :destroy
+  has_many :followed_houses, through: :relationships, source: :followed
   before_save { self.email = email.downcase }
   before_create :create_remember_token
   validates :name, presence: true, length: { maximum: 50 }
@@ -10,6 +12,18 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, length: { minimum: 6 }
+
+  def following?(house)
+    relationships.find_by(followed_id: house.id)
+  end
+
+  def follow!(house)
+    relationships.create!(followed_id: house.id)
+  end
+
+  def unfollow!(house)
+    relationships.find_by(followed_id: house.id).destroy
+  end
 
   def User.new_remember_token
     SecureRandom.urlsafe_base64

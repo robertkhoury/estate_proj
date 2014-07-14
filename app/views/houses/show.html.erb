@@ -12,8 +12,16 @@
   <center><%= image_tag "http://maps.googleapis.com/maps/api/streetview?size=600x450&location=#{@house.address.split.join('+')},#{@house.city.split.join('+')}+#{@house.state}&fov=90&pitch=0" %></center>
 <% end %>
 
-<br><br>
-
+<br>
+<center>
+  <div id="follow_form">
+  <% if current_user.following?(@house) %>
+    <%= render 'unfollow' %>
+  <% else %>
+    <%= render 'follow' %>
+  <% end %>
+  </div>
+</center>
 
 <br>
 
@@ -63,4 +71,5 @@
   frameborder="0" style="border:0"
   src=<%= "https://www.google.com/maps/embed/v1/place?key=AIzaSyBqejMuiEdMR24e-79FhVgQdOvzYHD0Low&q=#{@house.address.split.join('+')},#{@house.city.split.join('+')}+#{@house.state}" %>>
 </iframe></center>
+<div><br><br>
 

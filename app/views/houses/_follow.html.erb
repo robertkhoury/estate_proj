@@ -1,0 +1,4 @@
+<%= form_for(@house.relationships.build(followed_id: current_user.id)) do |f| %>
+  <div><%= f.hidden_field :followed_id %></div>
+  <%= f.submit "Favorite Home", class: "btn btn-large btn-primary" %>
+<% end %>
