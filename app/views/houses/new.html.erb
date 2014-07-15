@@ -8,6 +8,9 @@
 
       <%= f.hidden_field :picture_cache %>
       <%= f.file_field :picture %>
+
+      <%= f.label :status %>
+      <%= f.select :status, options_for_select(["Please, buy my home.", "Seeing what's out there.", "Make me an offer!"]) %>
   
       <%= f.label :street_address %>
       <%= f.text_field :address %>

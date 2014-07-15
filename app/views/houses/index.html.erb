@@ -14,21 +14,20 @@
   	<%= f.label :zip_eq, "Zip" %>
   	<%= f.text_field :zip_eq %>
 
-	<div class="row">
-		<div class="span4">
-	  	  <%= f.label :price_gteq, "Price min" %>
-	  	  <%= f.text_field :price_gteq %>
-   	    </div>
-   	    <div class="span4">
-	  	  <%= f.label :price_lteq, "Price max" %>
-	  	  <%= f.text_field :price_lteq %>
-	  </div>
-	</div>
-
-    <%= f.submit "Search", class: "btn btn-medium btn-primary" %>
+  	<div class="row">
+  		<div class="span4">
+  	  	  <%= f.label :price_gteq, "Price min" %>
+  	  	  <%= f.text_field :price_gteq %>
+     	    </div>
+     	    <div class="span4">
+  	  	  <%= f.label :price_lteq, "Price max" %>
+  	  	  <%= f.text_field :price_lteq %>
+  	  </div>
+  	</div>
+  <%= f.submit "Search", class: "btn btn-medium btn-primary" %>
+  </div>
 </div>
-</div>
- <% end %>
+<% end %>
 
 <ul class="listings">
   <% @houses.each do |house| %>
