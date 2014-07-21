@@ -10,7 +10,7 @@
       <br>
     <div class="home_search">
     <%= search_form_for @search do |f| %>
-      <%= f.text_field :address_or_city_or_zip_cont, :placeholder => 'Enter Address, City, OR Zip' %>
+      <%= f.text_field :address_or_city_cont, :placeholder => 'Enter Street Address OR City' %>
       <%= f.submit "Search Homes", class: "btn btn-large btn-primary" %>
     <% end %>
   </div>
