@@ -16,18 +16,24 @@
 
 
 <center>
-  <div id="follow_form">
-  <% if current_user.following?(@house) %>
-    <%= render 'unfollow' %>
+  <% if signed_in? %>
+    <div id="follow_form">
+    <% if current_user.following?(@house) %>
+      <%= render 'unfollow' %>
+    <% else %>
+      <%= render 'follow' %>
+    <% end %>
+    </div>
   <% else %>
-    <%= render 'follow' %>
+    <%= link_to "Sign Up or Sign In to favorite a home", signup_path, class: "btn btn-medium btn-primary" %> 
   <% end %>
-  </div>
 </center>
 
 <br>
 
+<h3>Owner Description</h3>
 <body><%= @house.description %></body>
+
 
 <br><br>
 <h3>Property Overview</h3>
