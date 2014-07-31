@@ -35,9 +35,6 @@ class User < ActiveRecord::Base
     Digest::SHA1.hexdigest(token.to_s)
   end
 
-  def mailboxer_email(object)
-    return nil
-  end
 
   private
 

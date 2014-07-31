@@ -19,13 +19,7 @@ SampleApp::Application.routes.draw do
   match '/contact',   to: 'static_pages#contact', via: 'get'
   match '/faq',       to: 'static_pages#faq',     via: 'get'
 
-  resources :conversations, only: [:index, :show, :new, :create] do
-    member do
-      post :reply
-      post :trash
-      post :untrash
-    end
-  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
