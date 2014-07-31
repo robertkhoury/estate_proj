@@ -40,11 +40,11 @@
       <%= f.number_field :price %>
 
 
-      <label>Size (e.g. 8,500 sqft)</label>
-      <%= f.text_field :square_footage %>
+      <%= f.label :square_footage %>
+      <%= f.text_field :square_footage, :placeholder => 'e.g. 8,500 sqft' %>
 
-      <label>Lot Size (e.g. 1.5 acres)</label>
-      <%= f.text_field :lot_size %>
+      <%= f.label :lot_size, :placeholder => 'e.g. 1.5 acres' %>
+      <%= f.text_field :lot_size, :placeholder => 'e.g. 8,500 sqft' %>
 
       <%= f.label :floors %>
       <%= f.select :floors, (1..5) %>
@@ -82,6 +82,7 @@
 	    <%= f.label :owner_description %>
       <%= f.text_field :description %>
 
+      <br><br>
       <%= f.submit "Post Listing", class: "btn btn-large btn-primary" %>
     <% end %>
   </div>

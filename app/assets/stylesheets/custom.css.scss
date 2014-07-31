@@ -152,7 +152,7 @@ aside {
 
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
-  width: 100%;
+  /* width: 100%; */
   margin-bottom: 15px;
   @include box_sizing;
 }
@@ -235,9 +235,22 @@ input {
 
 }
 
-.home_search {
+/* Home page */
 
+.home_search {
   display: inline-block;
+}
+
+.jumbotron {
+  margin-top: 50px;
+  margin-bottom: 20px;
+  h1 {
+    font-size: 4em;
+  }
+
+  h2 {
+    font-size: 2em;
+  }
 
 }
 

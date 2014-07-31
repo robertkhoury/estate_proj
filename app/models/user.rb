@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
   has_secure_password
   validates :password, length: { minimum: 6 }
 
+
+
   def following?(house)
     relationships.find_by(followed_id: house.id)
   end
@@ -31,6 +33,10 @@ class User < ActiveRecord::Base
 
   def User.digest(token)
     Digest::SHA1.hexdigest(token.to_s)
+  end
+
+  def mailboxer_email(object)
+    return nil
   end
 
   private
