@@ -6,12 +6,15 @@
     <%= form_for(@house) do |f| %>
       <%= render 'houses/error_messages' %>
 
-      <%= f.hidden_field :picture_cache %>
-      <%= f.file_field :picture %>
+      <%= f.label :listing_type %>
+      <%= f.select :listing_type, options_for_select(%w[Rent Buy]) %> 
 
       <%= f.label :status %>
       <%= f.select :status, options_for_select(["Please, buy my home.", "Seeing what's out there.", "Make me an offer!"]) %>
-  
+ 
+      <%= f.hidden_field :picture_cache %>
+      <%= f.file_field :picture %> 
+      
       <%= f.label :street_address %>
       <%= f.text_field :address %>
 

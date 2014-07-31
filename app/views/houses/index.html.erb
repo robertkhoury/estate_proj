@@ -21,6 +21,9 @@
     <%= f.text_field :price_gteq, :placeholder => 'Minimum Price' %>
   	<%= f.text_field :price_lteq, :placeholder => 'Maximum Price' %>
 </div>
+<br>
+    <%= f.select :listing_type_cont, options_for_select(%w[Rent Buy]), :include_blank => true %> 
+
   <br>
   <%= f.submit "Search", class: "btn btn-medium btn-primary" %>
   </div>
