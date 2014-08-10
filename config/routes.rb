@@ -1,5 +1,6 @@
 SampleApp::Application.routes.draw do
 
+  get "messages/new"
   resources :users do
     member do
       get :following
@@ -8,7 +9,10 @@ SampleApp::Application.routes.draw do
   resources :houses
   resources :sessions, only: [:new, :create, :destroy]
   resources :relationships, only: [:create, :destroy]
+  resources :microposts
+  resources :messages
   root  'static_pages#home'
+  match '/inbox',     to: 'users#inbox',          via: 'get'
   match '/results',   to: 'house#index',          via: 'get'
   match '/listhouse', to: 'houses#new',           via: 'get'
   match '/signup',    to: 'users#new',            via: 'get'

@@ -1,0 +1,14 @@
+<div class="listings">
+    <% if current_user.microposts.any? %>
+      <% @microposts = current_user.microposts.paginate(page: params[:page]) %>
+      <h3>Messages (<%= @microposts.where(:unread => true).count %> unread)</h3>
+      <ol class="microposts">
+        <%= render @microposts %>
+      </ol>
+      <%= will_paginate @microposts %>
+    <% else %>
+    	<h3> Your inbox is empty. </h3>
+    <% end %>
+
+
+</div>

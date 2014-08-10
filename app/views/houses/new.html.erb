@@ -36,7 +36,7 @@
       <%= f.label :beds %>
       <%= f.number_field(:beds, in: 0.0..9.0, step: 0.5) %> 
 
-	    <%= f.label :baths %>
+	<%= f.label :baths %>
       <%= f.number_field(:baths, in: 0.0..9.0, step: 0.25) %> 
 
       <%= f.label :price %>
@@ -46,8 +46,8 @@
       <%= f.label :square_footage %>
       <%= f.text_field :square_footage, :placeholder => 'e.g. 8,500 sqft' %>
 
-      <%= f.label :lot_size, :placeholder => 'e.g. 1.5 acres' %>
-      <%= f.text_field :lot_size, :placeholder => 'e.g. 8,500 sqft' %>
+      <%= f.label :lot_size %>
+      <%= f.text_field :lot_size, :placeholder => 'e.g. 1.5 acres' %>
 
       <%= f.label :floors %>
       <%= f.select :floors, (1..5) %>
@@ -55,34 +55,34 @@
       <%= f.label :house_type %>
 	    <%= f.select :house_type, options_for_select(%w[Single-Family Duplex Triplex Condo Townhouse Land Other]) %> 
 
-	    <%= f.label :flooring %>
-	    <%= f.select :flooring, options_for_select(%w[Carpet Hardwood Laminate Tile]) %> 
+	<%= f.label :flooring %>
+	<%= f.select :flooring, options_for_select(%w[Carpet Hardwood Laminate Tile]) %> 
 
-	    <%= f.label :fireplaces %>
+	<%= f.label :fireplaces %>
       <%= f.select :fireplaces, (0..9) %>
 
-	    <%= f.label :heating_type %>
-	    <%= f.select :heating_type, options_for_select(%w[None Central]) %>
+	<%= f.label :heating_type %>
+	<%= f.select :heating_type, options_for_select(%w[None Central]) %>
 
       <%= f.label :air_conditioning %>
-	    <%= f.select :air_conditioning, options_for_select(%w[None Central]) %>
+	<%= f.select :air_conditioning, options_for_select(%w[None Central]) %>
 
       <%= f.label :garage %>
-	    <%= f.select :garage, options_for_select(%w[None Attached Separate]) %>
+      <%= f.select :garage, options_for_select(%w[None Attached Separate]) %>
 
-	    <%= f.label :basement %>
-	    <%= f.select :basement, options_for_select(%w[No Yes]) %>
+      <%= f.label :basement %>
+      <%= f.select :basement, options_for_select(%w[No Yes]) %>
 
-	    <%= f.label :attic %>
-	    <%= f.select :attic, options_for_select(%w[No Yes]) %>  
+      <%= f.label :attic %>
+      <%= f.select :attic, options_for_select(%w[No Yes]) %>  
 
-	    <%= f.label :parking %>
+      <%= f.label :parking %>
       <%= f.text_field :parking %>
 
-	    <%= f.label :appliances %>
+	<%= f.label :appliances %>
       <%= f.text_field :appliances %>
 
-	    <%= f.label :owner_description %>
+	<%= f.label :owner_description %>
       <%= f.text_field :description %>
 
       <br><br>

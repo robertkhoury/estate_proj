@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140731205703) do
+ActiveRecord::Schema.define(version: 20140809221440) do
 
   create_table "houses", force: true do |t|
     t.string   "address"
@@ -45,11 +45,27 @@ ActiveRecord::Schema.define(version: 20140731205703) do
     t.string   "listing_type"
   end
 
+  create_table "messages", force: true do |t|
+    t.string   "sender_id",                           null: false
+    t.string   "recepient_id"
+    t.boolean  "sender_deleted",    default: false
+    t.boolean  "recepient_deleted", default: false
+    t.string   "subject",                             null: false
+    t.text     "body"
+    t.datetime "read_at"
+    t.string   "container",         default: "draft"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "unread"
+  end
+
   create_table "microposts", force: true do |t|
     t.string   "content"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "sender_id"
+    t.boolean  "unread"
   end
 
   add_index "microposts", ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"

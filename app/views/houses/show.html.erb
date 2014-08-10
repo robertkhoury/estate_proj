@@ -79,5 +79,25 @@
   frameborder="0" style="border:0"
   src=<%= "https://www.google.com/maps/embed/v1/place?key=AIzaSyBqejMuiEdMR24e-79FhVgQdOvzYHD0Low&q=#{@house.address.split.join('+')},#{@house.city.split.join('+')}+#{@house.state}" %>>
 </iframe></center>
-<div><br><br>
+<br><br>
+
+<h3>Contact the Owner</h3>
+<% if signed_in? %>
+  <%= form_for(@micropost) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+    <div class="micropost-form">
+      <%= f.text_area :content, placeholder: "Send a Message", :rows => 10 %>
+
+      <%= f.hidden_field :user_id, :value => @house.user_id %>
+
+      <%= f.hidden_field :sender_id, :value => current_user.id %>
+
+      <%= f.hidden_field :unread, :vaule => 'True' %>
+
+    </div>
+    <%= f.submit "Send Message", class: "btn btn-medium btn-primary" %>
+  <% end %>
+<% else %>
+  <%= link_to "Sign up or Sign In to contact the owner", signup_path, class: "btn btn-medium btn-primary" %> 
+<% end %>
 

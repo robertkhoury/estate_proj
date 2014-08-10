@@ -10,7 +10,7 @@
     <div class="home_search">
     <%= search_form_for @search do |f| %>
 
-      <%= f.select :listing_type_cont, options_for_select(%w[Rent Buy]), :include_blank => true %> 
+      <%= f.select :listing_type_cont, options_for_select(%w[Rent Buy], selected: 'Buy'), :include_blank => true %> 
 
       <%= f.text_field :address_or_city_cont, :placeholder => 'Enter Street Address OR City' %>
 

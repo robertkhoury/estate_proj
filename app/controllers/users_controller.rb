@@ -10,6 +10,8 @@ class UsersController < ApplicationController
   def show
   	@user = User.find(params[:id])
     @houses = @user.houses.paginate(page: params[:page])
+    @micropost = current_user.microposts.build if signed_in?
+    @microposts = @user.microposts.paginate(page: params[:page])
   end
 
   def new

@@ -12,6 +12,8 @@ class HousesController < ApplicationController
 
   def show
   	@house = House.find(params[:id])
+    receiver = User.find(@house.user_id)
+    @micropost = receiver.microposts.build
   end
 
   def edit

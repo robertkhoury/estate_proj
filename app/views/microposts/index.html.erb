@@ -1,0 +1,9 @@
+<div class="span8">
+    <% if current_user.microposts.any? %>
+      <h3>Messages (<%= current_user.microposts.count %>)</h3>
+      <ol class="microposts">
+        <%= render @microposts %>
+      </ol>
+      <%= will_paginate @microposts %>
+    <% end %>
+</div>

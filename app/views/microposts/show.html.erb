@@ -1,0 +1,24 @@
+<% sender = User.find(@micropost.sender_id) %>
+<h3> Message from <%= sender.name %></h3>
+<br>
+<body>
+	<%= @micropost.content %>
+	<br><br>
+	Received <%= time_ago_in_words(@micropost.created_at) %> ago.
+</body>
+<br><br>
+
+<%= form_for(@reply) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="micropost-form">
+    <%= f.text_area :content, placeholder: "Reply to this message", :cols => "1", :rows => "10" %>
+
+    <%= f.hidden_field :user_id, :value => @micropost.sender_id %>
+
+    <%= f.hidden_field :sender_id, :value => current_user.id %>
+
+    <%= f.hidden_field :unread, :value => true %>
+
+  </div>
+  <%= f.submit "Reply", class: "btn btn-medium btn-primary" %>
+<% end %>

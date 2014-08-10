@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :microposts
   has_many :houses
+  has_many :messages
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
   has_many :followed_houses, through: :relationships, source: :followed
   before_save { self.email = email.downcase }
@@ -12,6 +13,26 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, length: { minimum: 6 }
+  has_many :received_messages,
+   :class_name => 'Message',
+   :primary_key=>'beamer_id',
+   :foreign_key => 'recepient_id',
+   :order => "messages.created_at DESC",
+   :conditions => ["messages.recepient_deleted = ?", false]
+   
+
+  def received_messages?
+    Message.received_by(self)
+  end
+  
+  def unread_messages?
+    unread_message_count > 0 ? true : false
+  end
+ 
+  # Returns the number of unread messages for this user
+  def unread_message_count
+    eval 'messages.count(:conditions => ["recepient_id = ? AND read_at IS NULL", self.beamer_id])'
+  end
 
 
 
@@ -33,6 +54,11 @@ class User < ActiveRecord::Base
 
   def User.digest(token)
     Digest::SHA1.hexdigest(token.to_s)
+  end
+
+  def feed
+    # This is preliminary. See "Following users" for the full implementation.
+    Micropost.where("user_id = ?", id)
   end
 
 
