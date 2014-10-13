@@ -6,14 +6,21 @@
     <%= form_for(@house) do |f| %>
       <%= render 'houses/error_messages' %>
 
+      <div class="cloudinary-fileupload">
+      <%= f.label "Carrierwave upload" %>
+      <%= f.hidden_field :picture_cache %>
+      <%= f.file_field :picture %> 
+      </div>
+
       <%= f.label :listing_type %>
       <%= f.select :listing_type, options_for_select(%w[Rent Buy]) %> 
 
+      <%= f.label "Attachinary upload" %>
+      <%= attachinary_file_field_tag 'house[photos]', @house, :photos, :multiple => true %>
+    
+
       <%= f.label :status %>
       <%= f.select :status, options_for_select(["Please, buy my home.", "Seeing what's out there.", "Make me an offer!"]) %>
- 
-      <%= f.hidden_field :picture_cache %>
-      <%= f.file_field :picture %> 
       
       <%= f.label :street_address %>
       <%= f.text_field :address %>
@@ -22,7 +29,7 @@
       <%= f.text_field :city %>
       
       <%= f.label :state %>
-      <%= f.select :state, options_for_select(%w[ AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI WY]) %>
+      <%= f.select :state, options_for_select(%w[ AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI WY], selected: 'CA') %>
 
       <%= f.label :zip %>
       <%= f.number_field :zip, max: 99999 %>
@@ -89,4 +96,8 @@
       <%= f.submit "Post Listing", class: "btn btn-large btn-primary" %>
     <% end %>
   </div>
+
 </div>
+
+<script src="assets/multiple-image.js"></script>
+

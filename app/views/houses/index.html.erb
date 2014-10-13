@@ -1,34 +1,58 @@
 <% provide(:title, 'Search Listings') %>
-<h1>Search Listings</h1>
 
-<%= search_form_for @search do |f| %>
-<div class="row">
-  <div class="span5">
-  	<%= f.label :address_cont, "Street Address" %>
-  	<%= f.text_field :address_cont %>
+<h1>Robert's Real Estate</h1>
+    
+  <h3>Quick Search</h3>
+  <div class="home_search">
+    <%= search_form_for @search do |f| %>
 
-  	<%= f.label :city_cont, "City" %>
-  	<%= f.text_field :city_cont %>
+      <%= f.select :listing_type_cont, options_for_select(%w[Rent Buy], selected: 'Buy'), :include_blank => true %> 
 
-  	<%= f.label :zip_eq, "Zip" %>
-  	<%= f.text_field :zip_eq %>
+      <%= f.text_field :address_or_city_cont, :placeholder => 'Enter Street Address OR City' %>
 
+      <%= f.submit "Search Homes", class: "btn btn-medium btn-primary" %>
+
+    <% end %>
   </div>
-</div>
-<div class="form-inline">
-    <%= f.label :price_gteq, "Price" %>
+  <br><button type="button" class="btn btn-default btn-lg" id="advanced_search">
+  <span class="glyphicon glyphicon-search"></span> Advanced Search
+</button>
+
+<div class="advanced_search">
+  <h3>Advanced Search</h3>
+  <%= search_form_for @search do |f| %>
+  <div class="row">
+    <div class="span5">
+
+    	<%= f.label :city_cont, "City" %>
+    	<%= f.text_field :city_cont %>
+
+      <%= f.label :state_cont, "State" %>
+      <%= f.select :state_cont, options_for_select(%w[ AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI WY], selected: 'CA') %> 
+
+    	<%= f.label :zip_eq, "Zip" %>
+    	<%= f.text_field :zip_eq %>
+
+    </div>
+  </div>
+  <div class="form-inline">
+      <%= f.label :price_gteq, "Price" %>
+      <br>
+      <%= f.text_field :price_gteq, :placeholder => 'Minimum Price' %>
+    	<%= f.text_field :price_lteq, :placeholder => 'Maximum Price' %>
+  </div>
     <br>
-    <%= f.text_field :price_gteq, :placeholder => 'Minimum Price' %>
-  	<%= f.text_field :price_lteq, :placeholder => 'Maximum Price' %>
+      <%= f.select :listing_type_cont, options_for_select(%w[Rent Buy]), :include_blank => true %> 
+
+    <br>
+    <%= f.submit "Search", class: "btn btn-medium btn-primary" %>
+    </div>
+  </div>
+  <% end %>
 </div>
 <br>
-    <%= f.select :listing_type_cont, options_for_select(%w[Rent Buy]), :include_blank => true %> 
 
-  <br>
-  <%= f.submit "Search", class: "btn btn-medium btn-primary" %>
-  </div>
-</div>
-<% end %>
+<%= will_paginate %>
 
 <ul class="listings">
   <% @houses.each do |house| %>
@@ -39,3 +63,7 @@
     </li>
   <% end %>
 </ul>
+
+<%= will_paginate %>
+
+<script src="assets/advanced_search.js"></script>

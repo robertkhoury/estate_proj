@@ -5,6 +5,7 @@ class MicropostsController < ApplicationController
     @micropost = Micropost.new(micropost_params)
     if @micropost.save
       flash[:success] = "Message sent!"
+      #if (request.env['PATH_INFO'] == )
       redirect_to :back
     else
       render 'static_pages/home'

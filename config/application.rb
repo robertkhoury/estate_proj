@@ -5,6 +5,7 @@ require "active_record/railtie"
 require "action_controller/railtie"
 require "action_mailer/railtie"
 require "sprockets/railtie"
+require "attachinary/orm/active_record" # active_record or mongoid
 # require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems

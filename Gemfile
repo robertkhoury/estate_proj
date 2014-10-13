@@ -12,6 +12,8 @@ gem 'bootstrap-will_paginate', '0.0.9'
 gem "ransack"
 gem 'carrierwave'
 gem 'cloudinary'
+gem 'attachinary'
+gem 'rails-gallery'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'
