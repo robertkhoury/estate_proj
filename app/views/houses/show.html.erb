@@ -10,11 +10,13 @@
   <center><%= cl_image_tag(@house.picture_url, :c => "mfit", :quality => 80, :width => 650, :alt => @house.address) %></center>
 
 <% else %>
+  <h3>We got here</h3>
   <center><%= image_tag "http://maps.googleapis.com/maps/api/streetview?size=600x450&location=#{@house.address.split.join('+')},#{@house.city.split.join('+')}+#{@house.state}&fov=90&pitch=0" %></center>
   <center><% @house.photos.each do |photo| %>
             <%= @house.status %>
             <%= cl_image_tag(photo.path, :size => '70x50', :crop => :fill, :radius => 20) %>
             <% end %></center>
+
 <% end %>
 
 <br>

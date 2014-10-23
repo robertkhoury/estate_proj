@@ -16,7 +16,7 @@
       <%= f.select :listing_type, options_for_select(%w[Rent Buy]) %> 
 
       <%= f.label "Attachinary upload" %>
-      <%= attachinary_file_field_tag 'house[photos]', @house, :photos, :multiple => true %>
+      <%= f.attachinary_file_field :photos %>
     
 
       <%= f.label :status %>
@@ -100,4 +100,5 @@
 </div>
 
 <script src="assets/multiple-image.js"></script>
+<script src="assets/attach.js"></script>
 

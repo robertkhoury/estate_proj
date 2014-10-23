@@ -49,7 +49,7 @@ class HousesController < ApplicationController
                             :flooring, :year_built, :basement, :attic, 
                             :parking ,:fireplaces, :appliances, 
                             :house_type, :description, :zip, :city,
-                            :floors, :picture, :status, :listing_type, :photos)
+                            :floors, :picture, :status, :listing_type, {photos: []})
     end
 
 end

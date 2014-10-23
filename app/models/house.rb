@@ -8,6 +8,6 @@ class House < ActiveRecord::Base
   default_scope -> { order('created_at DESC') }
   validates_presence_of :user_id, :address, :city, :state, :price, :description, :zip
   mount_uploader :picture, PictureUploader
-  has_attachments :photos, maximum: 10
+  has_attachments :photos, :maximum => 10
 
 end
