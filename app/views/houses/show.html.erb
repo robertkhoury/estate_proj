@@ -1,25 +1,66 @@
 <% provide(:title, @house.address) %>
 
+<script id="img-wrapper-tmpl" type="text/x-jquery-tmpl">  
+    <div class="rg-image-wrapper">
+        {{if itemsCount > 1}}
+            <div class="rg-image-nav">
+                <a href="#" class="rg-image-nav-prev">Previous Image</a>
+                <a href="#" class="rg-image-nav-next">Next Image</a>
+            </div>
+        {{/if}}
+        <div class="rg-image"></div>
+        <div class="rg-loading"></div>
+        <div class="rg-caption-wrapper">
+            <div class="rg-caption" style="display:none;">
+                <p></p>
+            </div>
+        </div>
+    </div>
+</script>
+
+
 <h1><%= @house.address %></h1>
 <p><center><%= @house.city %>, <%= @house.state %>  <%= "%05d" % @house.zip %></center></p>
 <p><center><%= @house.status %>  Asking Price: $<%= number_with_delimiter(@house.price, :delimiter => ',') %></center></p>
 
 
 
-<% if @house.picture.present? %>
-  <center><%= cl_image_tag(@house.picture_url, :c => "mfit", :quality => 80, :width => 650, :alt => @house.address) %></center>
-
-<% else %>
-  <h3>We got here</h3>
+<% if not @house.photos.present? %>
   <center><%= image_tag "http://maps.googleapis.com/maps/api/streetview?size=600x450&location=#{@house.address.split.join('+')},#{@house.city.split.join('+')}+#{@house.state}&fov=90&pitch=0" %></center>
-  <center><% @house.photos.each do |photo| %>
-            <%= @house.status %>
-            <%= cl_image_tag(photo.path, :size => '70x50', :crop => :fill, :radius => 20) %>
-            <% end %></center>
+<br>
+<% else %>
+  
+
+  <div id="rg-gallery" class="rg-gallery">
+    <div class="rg-thumbs">
+        <!-- Elastislide Carousel Thumbnail Viewer -->
+        <div class="es-carousel-wrapper">
+            <div class="es-nav">
+                <span class="es-nav-prev">Previous</span>
+                <span class="es-nav-next">Next</span>
+            </div>
+            <div class="es-carousel">
+                <ul>
+                    <% i = 0 %>
+                    <% @house.photos.each do |photo| %>
+                    <li>
+                      <% i+=1 %>
+                      <a href="#">
+
+                            <img src='http://res.cloudinary.com/roberts-real-estate/image/upload/w_90,h_90,c_thumb/<%= photo.path %>' data-large='http://res.cloudinary.com/roberts-real-estate/image/upload/w_800,h_500,c_fit/<%= photo.path %>' alt="image02" data-description="Photo <%= i %>" /></a>
+
+                    </li>
+                    <% end %>
+                </ul>
+            </div>
+        </div>
+        <!-- End Elastislide Carousel Thumbnail Viewer -->
+    </div><!-- rg-thumbs -->
+</div><!-- rg-gallery -->
+
 
 <% end %>
 
-<br>
 
 
 <center>
@@ -115,4 +156,6 @@
 <% else %>
   <%= link_to "Sign up or Sign In to contact the owner", signup_path, class: "btn btn-medium btn-primary" %> 
 <% end %>
+
+<script src="assets/gallery.js"></script>
 

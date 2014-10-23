@@ -6,12 +6,6 @@
     <%= form_for(@house) do |f| %>
       <%= render 'houses/error_messages' %>
 
-      <div class="cloudinary-fileupload">
-      <%= f.label "Carrierwave upload" %>
-      <%= f.hidden_field :picture_cache %>
-      <%= f.file_field :picture %> 
-      </div>
-
       <%= f.label :listing_type %>
       <%= f.select :listing_type, options_for_select(%w[Rent Buy]) %> 
 
