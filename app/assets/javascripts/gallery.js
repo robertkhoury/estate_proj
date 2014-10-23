@@ -11,7 +11,6 @@ var $rgGallery          = $('#rg-gallery'),
         //gallery function
     })();
  
-Gallery.init();
 
 var current         = 0, 
     // mode : carousel || fullview
@@ -178,4 +177,3 @@ _showImage      = function( $item ) {
     }).attr( 'src', largesrc );
      
 };
- 
