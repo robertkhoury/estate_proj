@@ -179,4 +179,3 @@ _showImage      = function( $item ) {
      
 };
  
-return { init : init };
