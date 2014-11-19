@@ -81,7 +81,8 @@
           <%= "#{house.city}, #{house.state}" %> <% if house.zip %> <%= "#{'%05d' % house.zip}" %> <% end %>
         </div>
         <div class="house_bedbathsize line">
-          <%= "#{house.beds} beds     #{house.baths} baths     #{house.square_footage}" %>
+          <%= "#{house.beds} beds     #{house.baths} baths" %>
+          <%= number_with_delimiter((house.square_footage).to_i, :delimiter => ',') %> sqft
         </div>
     </li>
   <% end %>
