@@ -52,22 +52,42 @@
 </div>
 <br>
 
+<div class="results">
 <%= will_paginate %>
 
 <ul class="listings">
   <% @houses.each do |house| %>
     <li>
-      <% if house.photos.first %>
-        <% photo = house.photos.first %>
-        <%= image_tag "http://res.cloudinary.com/roberts-real-estate/image/upload/w_90,h_90,c_thumb/#{photo.path}" %>
-      <% end %>
-      <% if house.zip %>
-      <%= link_to "#{house.address}, #{house.city}, #{house.state} #{'%05d' % house.zip}", house %>
-      <% end %>
+        <div class="listing_pic">
+          <% if house.photos.first %>
+            <% photo = house.photos.first %>
+            <%= image_tag "http://res.cloudinary.com/roberts-real-estate/image/upload/w_150,h_120,c_thumb/#{photo.path}" %>
+          <% else %>
+            .
+          <% end %>
+        </div>
+        <div class="house_textinfo">
+        <div class="house_address">
+          <% if house.zip %>
+          <%= link_to "#{house.address}", house %>
+          <% end %>
+        </div>
+        <div class="house_price">
+          <% if house.zip %>
+            $<%= number_with_delimiter(house.price, :delimiter => ',')%>
+          <% end %>
+        </div>
+        <div class="house_citystate line">
+          <%= "#{house.city}, #{house.state}" %> <% if house.zip %> <%= "#{'%05d' % house.zip}" %> <% end %>
+        </div>
+        <div class="house_bedbathsize line">
+          <%= "#{house.beds} beds     #{house.baths} baths     #{house.square_footage}" %>
+        </div>
     </li>
   <% end %>
 </ul>
 
 <%= will_paginate %>
+</div>
 
 <script src="assets/advanced_search.js"></script>

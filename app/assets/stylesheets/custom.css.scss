@@ -213,6 +213,48 @@ input {
   }
 }
 
+.results {
+  margin-left: 35px;
+}
+
+.listing_pic {
+  width: 20%;
+  max-width: 200px;
+  float: left;
+  vertical-align: top;
+}
+
+.house_textinfo {
+  display: inline-block;
+  vertical-align:top;
+  width: 80%;
+}
+
+.house_address {
+  font-size: 1.5em;
+  margin-left: 10px;
+  width: 30%;
+  display: inline-block;
+  font-weight: bold;
+}
+
+.house_price {
+  font-size: 1.5em;
+  display: inline-block;
+  font-weight: bold;
+}
+
+.house_citystate {
+  margin-left: 10px;
+  width: 30%;
+  /* padding: 10px; */
+}
+
+.house_bedbathsize {
+  margin-left: 10px;
+  width: 30%;
+}
+
 .user_listings {
   font-size: 1.2em;
   text-align: left;
