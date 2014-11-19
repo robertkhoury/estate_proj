@@ -7,7 +7,7 @@
       <%= render 'houses/error_messages' %>
 
       <%= f.label :listing_type %>
-      <%= f.select :listing_type, options_for_select(%w[Rent Buy]) %> 
+      <%= f.select :listing_type, options_for_select(%w[Buy Rent]) %> 
 
       <%= f.label "Upload photos" %>
       <%= f.attachinary_file_field :photos %>
