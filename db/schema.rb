@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140811211245) do
+ActiveRecord::Schema.define(version: 20141120000416) do
 
   create_table "attachinary_files", force: true do |t|
     t.integer  "attachinariable_id"
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 20140811211245) do
     t.integer  "fireplaces"
     t.string   "appliances"
     t.string   "house_type"
-    t.string   "description"
+    t.text     "description"
     t.integer  "zip"
     t.string   "city"
     t.integer  "floors"
