@@ -87,7 +87,7 @@
 <h3>Property Overview</h3>
 <table class="table table-striped table-bordered table-condensed">
 <tr>
-  <td><%= @house.square_footage %> </td>
+  <td> Sq Ft: <%= number_with_delimiter((@house.square_footage).to_i, :delimiter => ',') %>  </td>
   <td>Lot Size: <%= @house.lot_size %> </td>		
   <td>Type: <%= @house.house_type %></td>
 </tr>
